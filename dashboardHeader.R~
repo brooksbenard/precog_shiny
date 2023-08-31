@@ -1,0 +1,45 @@
+# ----- ui for dashboardHeader item in RShiny -----
+header <- dashboardHeader(title = span(img(src = "bmir.svg", height = 40, width = 30),
+                                       "PRECOG"),
+                          titleWidth = 187,
+                          # Dropdown menu for notifications
+                          dropdownMenu(type = "notifications", 
+                                       badgeStatus = NULL,
+                                       icon = icon("mouse-pointer"),
+                                       headerText = HTML('<b> Select Ressources </b>'),
+                                       notificationItem(icon = icon("disease", lib = "font-awesome"),
+                                                        status = "info", 
+                                                        # text = tags$div(htmlOutput("precog_home_page"),
+                                                        #                 style = "display: inline-block; vertical-align: middle;")
+                                                        actionButton('precog_home_page', 'PRECOG')
+                                                        
+                                       ),
+                                                        # text = HTML('<a href = "#shiny-tab-home"> PRECOG </a>'),
+                                       notificationItem(
+                                         icon = icon('syringe', lib = "font-awesome"),
+                                         status = "info",
+                                         actionButton('iprecog_home_page', 'iPRECOG')
+                                       ),
+                                       notificationItem(
+                                         icon = icon('robot', lib = "font-awesome"),
+                                         status = "info",
+                                         text = tags$div(htmlOutput("cibersort_link"),
+                                                         style = "display: inline-block; vertical-align: middle;")
+                                       )
+                            ),
+                          dropdownMenu(type = "notifications", 
+                                       badgeStatus = NULL,
+                                       icon = icon("user"),
+                                       headerText = HTML(' <b> Welcome to PRECOG! </b>'),
+                                       notificationItem(icon = icon("user", lib = "font-awesome"),
+                                                        status = "info", 
+                                                        text = tags$div(htmlOutput("login.user"),
+                                                                        style = "display: inline-block; vertical-align: middle;")
+                                                        ),
+                                       notificationItem(
+                                                        icon = icon('sign-out-alt', lib = "font-awesome"),
+                                                        status = "info",
+                                                        auth0::logoutButton()
+                                                        )
+                                        )
+                          ) 
